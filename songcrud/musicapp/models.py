@@ -2,7 +2,6 @@ from django.db import models
 from datetime import datetime
 # Create your models here.
 class Artiste(models.Model):
-    id = models.IntegerField(primary_key=True)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     age = models.IntegerField()
