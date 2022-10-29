@@ -13,9 +13,7 @@ def ApiOverview(request):
     api_urls = {
         'Api Overview': '/',
         'Song List': '/songs',
-        'Artiste List': '/artistes',
         'Song Detail': '/songs/id',
-        'Artiste Detail': '/artistes/id',
     }
     return Response(api_urls)
 '''   
