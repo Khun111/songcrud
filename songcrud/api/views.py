@@ -3,11 +3,22 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
 from musicapp.models import Artiste, Song, Lyric
-from .serializers import ArtisteSerializer, SongSerializer
+from .serializers import SongSerializer
 from rest_framework import serializers
 from rest_framework import status
 
 # Create your views here.
+@api_view(['GET'])
+def ApiOverview(request):
+    api_urls = {
+        'Api Overview': '/',
+        'Song List': '/songs',
+        'Artiste List': '/artistes',
+        'Song Detail': '/songs/id',
+        'Artiste Detail': '/artistes/id',
+    }
+    return Response(api_urls)
+'''   
 @api_view(['GET', 'POST'])
 def artiste_list(request, format=None):
     if request.method == 'GET':
@@ -39,7 +50,7 @@ def artiste_detail(request, id, format=None):
     elif request.method == 'DELETE':
         artiste.delete()
         return  Response(status=status.HTTP_204_NO_CONTENT)
-
+'''
 @api_view(['GET', 'POST'])
 def song_list(request, format=None):
     if request.method == 'GET':
@@ -71,14 +82,3 @@ def song_detail(request, id, format=None):
     elif request.method == 'DELETE':
         song.delete()
         return  Response(status=status.HTTP_204_NO_CONTENT)
-
-@api_view(['GET'])
-def ApiOverview(request):
-    api_urls = {
-        'Api Overview': '/',
-        'Song List': '/songs',
-        'Artiste List': '/artistes',
-        'Song Detail': '/songs/id',
-        'Artiste Detail': '/artistes/id',
-    }
-    return Response(api_urls)
